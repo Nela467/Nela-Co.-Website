@@ -39,14 +39,15 @@
         background-color: #1abc9c;
     }
 
-    /* Main content with full-page background */
+    /* Main content with full background logo */
     .main {
         flex: 1;
-        background-image: url('logo.png'); /* your uploaded logo */
+        position: relative;
+        background-image: url('logo.png'); /* replace with your uploaded logo */
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        position: relative;
+        padding-left: 40px;
     }
 
     /* Top right company name */
@@ -59,12 +60,12 @@
         color: #2c3e50;
     }
 
-    /* Sections (transparent background so logo shows through) */
+    /* Sections over background */
     section {
         padding: 100px 20px;
         min-height: 100vh;
-        border-bottom: 1px solid rgba(255,255,255,0.2);
-        background-color: rgba(255,255,255,0.6);
+        background-color: rgba(255,255,255,0.6); /* slightly transparent so logo shows */
+        border-bottom: 1px solid rgba(0,0,0,0.1);
     }
 
     section h2 {
