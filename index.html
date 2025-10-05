@@ -5,26 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nela & Co. - Rise to Balance</title>
 <style>
+    /* Body with background logo */
     body {
         margin: 0;
         font-family: Arial, sans-serif;
         display: flex;
-       <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        display: flex;
-        /* Background logo */
-    background-image: url('Logo.png.png'); /* replace with your logo path */
-    background-size: cover;            /* make it fill the screen */
-    background-repeat: no-repeat;      /* prevent repeating */
-    background-position: center;       /* center the image */
+
+        background-image: url('Logo.png.png'); /* matches your file */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        min-height: 100vh; /* ensure it fills the screen */
     }
 
     /* Sidebar */
     .sidebar {
         width: 200px;
-        background-color: #2c3e50;
+        background-color: rgba(44, 62, 80, 0.9); /* slightly transparent */
         display: flex;
         flex-direction: column;
         padding-top: 20px;
@@ -49,6 +46,12 @@
         background-color: #1abc9c;
     }
 
+    /* Main content */
+    .main {
+        flex: 1; /* take remaining space */
+        background-color: transparent; /* transparent so logo shows through */
+        position: relative;
+    }
 
     /* Top right company name */
     .company-name {
@@ -60,11 +63,11 @@
         color: #2c3e50;
     }
 
-    /* Sections over background */
+    /* Sections */
     section {
         padding: 100px 20px;
         min-height: 100vh;
-        background-color: rgba(255,255,255,0.6); /* slightly transparent so logo shows */
+        background-color: rgba(255,255,255,0.7); /* semi-transparent so logo shows through */
         border-bottom: 1px solid rgba(0,0,0,0.1);
     }
 
