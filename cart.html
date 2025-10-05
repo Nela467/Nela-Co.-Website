@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart - Nela & Co.</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+        }
+        .container {
+            max-width: 800px;
+            margin: 120px auto 0 auto;
+            padding: 40px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+        }
+        th, td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background-color: #1abc9c;
+            color: #fff;
+            font-weight: bold;
+        }
+        .total-row td {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .checkout-btn {
+            background-color: #1abc9c;
+            color: #fff;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 24px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background 0.2s;
+        }
+        .checkout-btn:hover {
+            background-color: #16a085;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Cart</h1>
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Subtotal</th>
+            </tr>
+            <tr>
+                <td>Yoga Mat</td>
+                <td>1</td>
+                <td>$29.99</td>
+                <td>$29.99</td>
+            </tr>
+            <tr>
+                <td>Stainless Water Bottle</td>
+                <td>2</td>
+                <td>$18.00</td>
+                <td>$36.00</td>
+            </tr>
+            <tr>
+                <td>Resistance Bands</td>
+                <td>1</td>
+                <td>$15.50</td>
+                <td>$15.50</td>
+            </tr>
+            <tr class="total-row">
+                <td colspan="3">Total</td>
+                <td>$81.49</td>
+            </tr>
+        </table>
+        <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+</body>
+</html>
