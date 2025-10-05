@@ -5,23 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nela & Co. - Rise to Balance</title>
 <style>
-    /* Body with background logo */
+    /* Body layout */
     body {
         margin: 0;
         font-family: Arial, sans-serif;
         display: flex;
+        min-height: 100vh;
+    }
 
-        background-image: url('Logo.png.png');
-    background-repeat: no-repeat;
-    background-position: center center;   /* center vertically and horizontally */
-    background-size: 20vw auto;           /* 20% of viewport width, height scales automatically */
-    min-height: 100vh;
+    /* Watermark logo */
+    .background-logo {
+        position: fixed;          
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;             /* adjust size */
+        height: auto;
+        background-image: url('Logo.png.png'); /* your logo file */
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.2;             /* subtle watermark */
+        pointer-events: none;     /* clicks pass through */
+        z-index: -1;              /* behind everything */
     }
 
     /* Sidebar */
     .sidebar {
         width: 200px;
-        background-color: rgba(44, 62, 80, 0.9); /* slightly transparent */
+        background-color: rgba(44, 62, 80, 0.9);
         display: flex;
         flex-direction: column;
         padding-top: 20px;
@@ -48,8 +60,8 @@
 
     /* Main content */
     .main {
-        flex: 1; /* take remaining space */
-        background-color: transparent; /* transparent so logo shows through */
+        flex: 1;
+        background-color: transparent;
         position: relative;
     }
 
@@ -80,60 +92,65 @@
 </head>
 <body>
 
-<div class="sidebar">
-    <button onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About Us</button>
-    <button onclick="document.getElementById('recipes').scrollIntoView({behavior:'smooth'})">Recipes</button>
-    <button onclick="document.getElementById('community').scrollIntoView({behavior:'smooth'})">Community Feed</button>
-    <button onclick="document.getElementById('wellness').scrollIntoView({behavior:'smooth'})">Wellness</button>
-    <button onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop</button>
-    <button onclick="document.getElementById('workouts').scrollIntoView({behavior:'smooth'})">At Home Workouts</button>
-    <button onclick="document.getElementById('cart').scrollIntoView({behavior:'smooth'})">Cart</button>
-    <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Me</button>
-</div>
+    <!-- Watermark logo -->
+    <div class="background-logo"></div>
 
-<div class="main">
-    <div class="company-name">NELA & CO. - RISE TO BALANCE</div>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <button onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About Us</button>
+        <button onclick="document.getElementById('recipes').scrollIntoView({behavior:'smooth'})">Recipes</button>
+        <button onclick="document.getElementById('community').scrollIntoView({behavior:'smooth'})">Community Feed</button>
+        <button onclick="document.getElementById('wellness').scrollIntoView({behavior:'smooth'})">Wellness</button>
+        <button onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop</button>
+        <button onclick="document.getElementById('workouts').scrollIntoView({behavior:'smooth'})">At Home Workouts</button>
+        <button onclick="document.getElementById('cart').scrollIntoView({behavior:'smooth'})">Cart</button>
+        <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Me</button>
+    </div>
 
-    <section id="about">
-        <h2>About Us</h2>
-        <p>Brief description about Nela & Co.</p>
-    </section>
+    <!-- Main content -->
+    <div class="main">
+        <div class="company-name">NELA & CO. - RISE TO BALANCE</div>
 
-    <section id="recipes">
-        <h2>Recipes</h2>
-        <p>Healthy recipes and tips.</p>
-    </section>
+        <section id="about">
+            <h2>About Us</h2>
+            <p>Brief description about Nela & Co.</p>
+        </section>
 
-    <section id="community">
-        <h2>Community Feed</h2>
-        <p>Connect with others.</p>
-    </section>
+        <section id="recipes">
+            <h2>Recipes</h2>
+            <p>Healthy recipes and tips.</p>
+        </section>
 
-    <section id="wellness">
-        <h2>Wellness</h2>
-        <p>Guides for holistic living.</p>
-    </section>
+        <section id="community">
+            <h2>Community Feed</h2>
+            <p>Connect with others.</p>
+        </section>
 
-    <section id="shop">
-        <h2>Shop</h2>
-        <p>Purchase products here.</p>
-    </section>
+        <section id="wellness">
+            <h2>Wellness</h2>
+            <p>Guides for holistic living.</p>
+        </section>
 
-    <section id="workouts">
-        <h2>At Home Workouts</h2>
-        <p>Fitness routines you can do at home.</p>
-    </section>
+        <section id="shop">
+            <h2>Shop</h2>
+            <p>Purchase products here.</p>
+        </section>
 
-    <section id="cart">
-        <h2>Cart</h2>
-        <p>Your shopping cart items.</p>
-    </section>
+        <section id="workouts">
+            <h2>At Home Workouts</h2>
+            <p>Fitness routines you can do at home.</p>
+        </section>
 
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <p>How to reach Nela & Co.</p>
-    </section>
-</div>
+        <section id="cart">
+            <h2>Cart</h2>
+            <p>Your shopping cart items.</p>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>How to reach Nela & Co.</p>
+        </section>
+    </div>
 
 </body>
 </html>
