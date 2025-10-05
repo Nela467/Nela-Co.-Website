@@ -15,20 +15,20 @@
 
     /* Watermark logo */
     .background-logo {
-        position: fixed;          
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 300px;             /* adjust size */
-        height: auto;
-        background-image: url('Logo.png'); /* your logo file */
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        opacity: 0.2;             /* subtle watermark */
-        pointer-events: none;     /* clicks pass through */
-        z-index: -1;              /* behind everything */
-    }
+    position: fixed;          
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;             /* Set explicit height */
+    background-image: url('Logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: -1;
+}
 
     /* Sidebar */
     .sidebar {
