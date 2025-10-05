@@ -77,25 +77,8 @@
         color: #2c3e50;
     }
 </style>
-    .background-logo {
-    position: fixed;          /* stay behind everything */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* center it */
-    width: 300px;             /* adjust size */
-    height: auto;             /* keep aspect ratio */
-    background-image: url('Logo.png.png'); /* your actual file */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.2;             /* subtle watermark */
-    pointer-events: none;     /* clicks pass through */
-    z-index: -1;              /* behind everything */
-}
 </head>
 <body>
-    <div class="background-logo"></div>
-
 
 <div class="sidebar">
     <button onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About Us</button>
