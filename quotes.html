@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quotes - Nela & Co.</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #ffc0cb; /* light pink */
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+        font-size: 48px;
+        margin-bottom: 40px;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .quote-card {
+        background-color: white;
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        font-size: 18px;
+        color: #333;
+        line-height: 1.6;
+        font-style: italic;
+        transition: transform 0.3s, box-shadow 0.3s;
+        text-align: center;
+    }
+
+    .quote-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    }
+
+    .highlight {
+        background-color: #ffefef;
+        color: #d6336c;
+        font-weight: bold;
+        font-size: 20px;
+        box-shadow: 0 8px 20px rgba(214,51,108,0.3);
+    }
+</style>
+</head>
+<body>
+
+<h1>Wellness Quotes</h1>
+
+<div class="grid-container">
+    <div class="quote-card">“Take care of your body. It’s the only place you have to live.” – Jim Rohn</div>
+    <div class="quote-card">“The greatest wealth is health.” – Virgil</div>
+    <div class="quote-card">“Nourish to flourish.” (original)</div>
+    <div class="quote-card">“Mindfulness is the pause that empowers every choice.” (original)</div>
+    <div class="quote-card highlight">“Self-care is giving the world the best of you, not what’s left of you.” – Katie Reed</div>
+</div>
+
+</body>
+</html>
