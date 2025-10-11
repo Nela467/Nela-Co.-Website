@@ -1,70 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Community Feed - Nela & Co.</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community Feed - Nela & Co.</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #ffc0cb; /* light pink */
+    }
+
+    /* Sidebar */
+    .sidebar {
+        width: 200px;
+        background-color: rgba(44, 62, 80, 0.9);
+        display: flex;
+        flex-direction: column;
+        padding-top: 20px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+    }
+
+    .sidebar button {
+        background-color: #34495e;
+        color: #fff;
+        border: none;
+        padding: 15px 20px;
+        margin: 5px 0;
+        cursor: pointer;
+        text-align: left;
+        font-size: 16px;
+        transition: 0.3s;
+    }
+
+    .sidebar button:hover {
+        background-color: #1abc9c;
+    }
+
+    /* Main content */
+    .main-content {
+        margin-left: 200px; /* same as sidebar width */
+        padding: 40px 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+
+    label, select, input, textarea, button {
+        font-size: 16px;
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 80px;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    input {
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    button {
+        padding: 12px;
+        background-color: #1abc9c;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background 0.2s;
+    }
+
+    button:hover {
+        background-color: #16a085;
+    }
+
+    .post {
+        background: #fff;
+        padding: 15px;
+        border-radius: 12px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .meta {
+        font-size: 12px;
+        color: gray;
+        margin-top: 5px;
+    }
+
+    select {
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    @media (max-width: 600px) {
+        .main-content {
+            margin-left: 0;
+            padding: 20px 10px;
         }
-        .container {
-            max-width: 800px;
-            margin: 120px auto 0 auto;
-            padding: 40px;
-            background: rgba(255,255,255,0.9);
-            border-radius: 8px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+
+        .sidebar {
+            width: 100%;
+            height: auto;
+            position: relative;
         }
-        h1 {
-            text-align: center;
-            color: #2c3e50;
+
+        .sidebar button {
+            margin: 5px 0;
         }
-        .post {
-            margin-bottom: 32px;
-            padding: 16px;
-            border-bottom: 1px solid #eee;
-        }
-        .post h2 {
-            color: #1abc9c;
-            margin-bottom: 8px;
-        }
-        .post .author {
-            color: #888;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-        .post p {
-            font-size: 16px;
-            color: #34495e;
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>Community Feed</h1>
-        
-        <div class="post">
-            <h2>Welcome to the Community!</h2>
-            <div class="author">Posted by Nela</div>
-            <p>Share your wellness journey, recipes, and workout tips with everyone here!</p>
-        </div>
-        
-        <div class="post">
-            <h2>Motivation Monday</h2>
-            <div class="author">Posted by Alex</div>
-            <p>Let’s kick off the week with some positive energy! What’s motivating you today?</p>
-        </div>
-        
-        <div class="post">
-            <h2>Recipe Swap</h2>
-            <div class="author">Posted by Jamie</div>
-            <p>Who has a great healthy dessert recipe? Post yours below!</p>
-        </div>
-        
-        <!-- Add more posts here! -->
-        
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <button onclick="document.getElementById('threadSection').scrollIntoView({behavior:'smooth'})">Community Feed</button>
+    <button onclick="document.getElementById('wellness').scrollIntoView({behavior:'smooth'})">Wellness</button>
+    <button onclick="document.getElementById('recipes').scrollIntoView({behavior:'smooth'})">Recipes</button>
+    <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
+</div>
+
+<!-- Main content -->
+<div class="main-content">
+    <h1>Community Feed</h1>
+
+    <div id="threadSection">
+        <label for="threadSelect"><b>Select Thread:</b></label>
+        <select id="threadSelect">
+            <option>General</option>
+            <option>Fitness</option>
+            <option>Recipes</option>
+            <option>Off-topic</option>
+        </select>
+
+        <form id="postForm">
+            <input id="nameInput" placeholder="Your name" required />
+            <textarea id="postText" rows="3" placeholder="Write something..." required></textarea>
+            <button type="submit">Post</button>
+        </form>
+
+        <div id="posts"></div>
     </div>
+</div>
+
+<script>
+    const form = document.getElementById('postForm');
+    const nameInput = document.getElementById('nameInput');
+    const text = document.getElementById('postText');
+    const postsDiv = document.getElementById('posts');
+    const threadSelect = document.getElementById('threadSelect');
+    const STORAGE_KEY = 'threaded_forum_posts';
+
+    let allPosts = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+
+    function getThreadPosts() {
+        const thread = threadSelect.value;
+        return allPosts[thread] || [];
+    }
+
+    function savePosts() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(allPosts));
+    }
+
+    function renderPosts() {
+        const posts = getThreadPosts();
+        postsDiv.innerHTML = posts.length
+            ? posts.map(p => `
+                <div class='post'>
+                    <strong>${p.name}</strong><br>
+                    <div>${p.body}</div>
+                    <div class='meta'>${p.createdAt}</div>
+                </div>
+            `).join('')
+            : `<p style="color:gray;">No posts yet in this thread.</p>`;
+    }
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        const trimmed = text.value.trim();
+        const name = nameInput.value.trim() || 'Anonymous';
+        if (!trimmed) return;
+        const thread = threadSelect.value;
+        const newPost = { name, body: trimmed, createdAt: new Date().toLocaleString() };
+        allPosts[thread] = [newPost, ...(allPosts[thread] || [])];
+        savePosts();
+        text.value = '';
+        renderPosts();
+    });
+
+    threadSelect.addEventListener('change', renderPosts);
+    renderPosts();
+</script>
+
 </body>
 </html>
