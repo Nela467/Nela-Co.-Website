@@ -96,12 +96,37 @@
         border-radius: 12px;
         margin-bottom: 15px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        position: relative;
     }
 
     .meta {
         font-size: 12px;
         color: gray;
         margin-top: 5px;
+    }
+
+    .post-buttons {
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .like-btn {
+        background-color: #f39c12;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .delete-btn {
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
     }
 
     select {
@@ -184,14 +209,37 @@
     function renderPosts() {
         const posts = getThreadPosts();
         postsDiv.innerHTML = posts.length
-            ? posts.map(p => `
-                <div class='post'>
+            ? posts.map((p, index) => `
+                <div class='post' data-index='${index}'>
                     <strong>${p.name}</strong><br>
                     <div>${p.body}</div>
                     <div class='meta'>${p.createdAt}</div>
+                    <div class='post-buttons'>
+                        <button class='like-btn'>Like (${p.likes || 0})</button>
+                        <button class='delete-btn'>Delete</button>
+                    </div>
                 </div>
             `).join('')
             : `<p style="color:gray;">No posts yet in this thread.</p>`;
+
+        // Add button listeners
+        document.querySelectorAll('.like-btn').forEach((btn, idx) => {
+            btn.onclick = () => {
+                const thread = threadSelect.value;
+                allPosts[thread][idx].likes = (allPosts[thread][idx].likes || 0) + 1;
+                savePosts();
+                renderPosts();
+            };
+        });
+
+        document.querySelectorAll('.delete-btn').forEach((btn, idx) => {
+            btn.onclick = () => {
+                const thread = threadSelect.value;
+                allPosts[thread].splice(idx, 1);
+                savePosts();
+                renderPosts();
+            };
+        });
     }
 
     form.addEventListener('submit', e => {
@@ -200,7 +248,7 @@
         const name = nameInput.value.trim() || 'Anonymous';
         if (!trimmed) return;
         const thread = threadSelect.value;
-        const newPost = { name, body: trimmed, createdAt: new Date().toLocaleString() };
+        const newPost = { name, body: trimmed, createdAt: new Date().toLocaleString(), likes: 0 };
         allPosts[thread] = [newPost, ...(allPosts[thread] || [])];
         savePosts();
         text.value = '';
