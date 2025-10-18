@@ -5,49 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Nela & Co.</title>
     <style>
-        /* Full page layout */
         body {
             margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center; /* horizontal center */
-            align-items: center;     /* vertical center */
-            text-align: center;
-            background-color: #ffc0cb; /* light pink background */
             font-family: Arial, sans-serif;
+            background-color: #fce4ec; /* light pink background */
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 200px;
+            background-color: #ffffff;
+            height: 100vh;
+            padding-top: 40px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            left: 0;
+            border-right: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .sidebar button {
+            border: none;
+            background: none;
+            padding: 15px;
+            margin: 5px 10px;
+            text-align: left;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sidebar button:hover {
+            background-color: rgba(0,0,0,0.05);
+            color: #1abc9c;
+        }
+
+        /* Main content */
+        .main-content {
+            margin-left: 200px; /* same width as sidebar */
             padding: 20px;
         }
 
-        /* Paragraph styling */
-        p {
-            font-size: 20px;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px; /* limits width so text doesn’t stretch too far */
+        .company-name {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #2c3e50;
         }
 
-        /* Highlighted "ABOUT US" */
-        .highlight {
-            font-size: 28px; /* slightly bigger */
-            font-weight: bold;
-            display: block;
-            margin-bottom: 15px;
+        h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            color: #2c3e50;
         }
     </style>
 </head>
 <body>
-    <p>
-        <span class="highlight">ABOUT US</span>
-        Hi Everyone!<br>
-        I created Nela & Co, - Rise to Balance because I believe wellness is not about perfection - it is about connection, growth, and balance in every part of life.<br><br>
-        This page is my little corner of the internet where health, mindfulness, and movement meet in a way that is real, practical, & uplifting.<br><br>
-        Here you will find:<br>
-        - Delicious easy to follow recipes that nourish your body and soul.<br>
-        - Workout videos for every level so you can move confidently & joyfully.<br>
-        - Mindfulness & wellness practices to calm your mind and centre your spirit.<br>
-        - A supportive community where we lift each other up, share wins, and grow together.<br><br>
-        My goal is simple: To inspire you to rise each day feeling balanced, strong, and empowered - body, mind, & heart. No extremes, no quick fixes, just sustainable habits & a space to celebrate progress not perfection.<br>
-        Join me, explore, and let's rise to balance together!
-    </p>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <button onclick="location.href='about.html'">About Us</button>
+        <button onclick="location.href='recipes.html'">Recipes</button>
+        <button onclick="window.open('https://bettergram-izfvgi41.bettermode.io', '_blank')">Community Feed</button>
+        <button onclick="location.href='wellness.html'">Wellness</button>
+        <button onclick="location.href='shop.html'">Shop</button>
+        <button onclick="location.href='workouts.html'">At Home Workouts</button>
+        <button onclick="location.href='cart.html'">Cart</button>
+        <button onclick="location.href='contact.html'">Contact Me</button>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <div class="company-name">ABOUT US</div>
+
+        <p>Hi Everyone!<br>
+        I created Nela & Co - Rise to Balance because I believe wellness is not about perfection — it is about connection, growth, and balance in every part of life. This page is my little corner of the internet where health, mindfulness, and movement meet in a way that is real, practical, & uplifting.</p>
+
+        <p>Here you will find:</p>
+        <ul style="max-width: 800px; margin: 0 auto 20px auto; font-size:18px; line-height:1.6; color:#2c3e50;">
+            <li>Delicious easy-to-follow recipes that nourish your body and soul.</li>
+            <li>Workout videos for every level so you can move confidently & joyfully.</li>
+            <li>Mindfulness & wellness practices to calm your mind and centre your spirit.</li>
+            <li>A supportive community where we lift each other up, share wins, and grow together.</li>
+        </ul>
+
+        <p>My goal is simple: To inspire you to rise each day feeling balanced, strong, and empowered — body, mind, & heart. No extremes, no quick fixes, just sustainable habits & a space to celebrate progress not perfection. Join me, explore, and let's rise to balance together!</p>
+    </div>
+
 </body>
 </html>
