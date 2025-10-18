@@ -8,52 +8,42 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #fce4ec; /* light pink background */
+            background-color: #fce4ec; /* light pink */
+            display: flex;
         }
 
         /* Sidebar */
         .sidebar {
             width: 200px;
-            background-color: #ffffff;
-            height: 100vh;
-            padding-top: 40px;
+            background-color: #2c3e50; /* navy color */
             display: flex;
             flex-direction: column;
-            position: fixed;
+            padding-top: 20px;
+            position: sticky;
             top: 0;
-            left: 0;
-            border-right: 1px solid rgba(0,0,0,0.05);
+            height: 100vh;
         }
 
         .sidebar button {
+            background-color: #34495e;
+            color: #fff;
             border: none;
-            background: none;
-            padding: 15px;
-            margin: 5px 10px;
+            padding: 15px 20px;
+            margin: 5px 0;
+            cursor: pointer;
             text-align: left;
             font-size: 16px;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: background-color 0.3s, color 0.3s;
+            transition: 0.3s;
         }
 
         .sidebar button:hover {
-            background-color: rgba(0,0,0,0.05);
-            color: #1abc9c;
+            background-color: #1abc9c;
         }
 
         /* Main content */
         .main-content {
-            margin-left: 200px; /* same width as sidebar */
-            padding: 20px;
-        }
-
-        .company-name {
-            text-align: center;
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #2c3e50;
+            flex: 1;
+            padding: 50px 30px;
         }
 
         h2 {
@@ -63,11 +53,19 @@
             color: #2c3e50;
         }
 
-        p {
+        p, ul {
             font-size: 18px;
             line-height: 1.6;
             max-width: 800px;
-            margin: 0 auto 20px auto;
+            margin: 0 auto 20px auto; /* centers the content */
+            color: #2c3e50;
+        }
+
+        .company-name {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 30px;
             color: #2c3e50;
         }
     </style>
@@ -94,7 +92,7 @@
         I created Nela & Co - Rise to Balance because I believe wellness is not about perfection — it is about connection, growth, and balance in every part of life. This page is my little corner of the internet where health, mindfulness, and movement meet in a way that is real, practical, & uplifting.</p>
 
         <p>Here you will find:</p>
-        <ul style="max-width: 800px; margin: 0 auto 20px auto; font-size:18px; line-height:1.6; color:#2c3e50;">
+        <ul>
             <li>Delicious easy-to-follow recipes that nourish your body and soul.</li>
             <li>Workout videos for every level so you can move confidently & joyfully.</li>
             <li>Mindfulness & wellness practices to calm your mind and centre your spirit.</li>
