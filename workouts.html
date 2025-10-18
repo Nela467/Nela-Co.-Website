@@ -2,86 +2,138 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>At Home Workouts - Nela & Co.</title>
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
+            background-color: #fce4ec; /* light pink */
+            display: flex;
         }
-        .container {
-            max-width: 800px;
-            margin: 120px auto 0 auto;
-            padding: 40px;
-            background: rgba(255,255,255,0.9);
-            border-radius: 8px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+
+        /* Sidebar */
+        .sidebar {
+            width: 200px;
+            background-color: #2c3e50; /* navy color */
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
         }
-        h1 {
+
+        .sidebar button {
+            background-color: #34495e;
+            color: #fff;
+            border: none;
+            padding: 15px 20px;
+            margin: 5px 0;
+            cursor: pointer;
+            text-align: left;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .sidebar button:hover {
+            background-color: #1abc9c;
+        }
+
+        /* Main content */
+        .main-content {
+            flex: 1;
+            padding: 50px 30px;
+        }
+
+        h2 {
             text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
             color: #2c3e50;
         }
-        .workout {
-            margin-bottom: 32px;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
-        .workout h2 {
-            color: #1abc9c;
+
+        .grid-item {
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+            padding: 20px;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .grid-item h3 {
+            font-size: 20px;
+            color: #2c3e50;
             margin-bottom: 10px;
         }
-        .workout ul {
-            margin: 0 0 10px 0;
-            padding-left: 18px;
-        }
-        .workout p {
+
+        .grid-item p {
             font-size: 16px;
-            color: #34495e;
+            color: #444;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>At Home Workouts</h1>
-        
-        <div class="workout">
-            <h2>Full Body Circuit</h2>
-            <ul>
-                <li>10 Squats</li>
-                <li>10 Push-ups</li>
-                <li>20 Jumping Jacks</li>
-                <li>10 Lunges (each leg)</li>
-                <li>15-Second Plank</li>
-            </ul>
-            <p>Repeat this circuit 3-5 times for a quick and effective home workout.</p>
-        </div>
-        
-        <div class="workout">
-            <h2>Core Strength</h2>
-            <ul>
-                <li>20 Bicycle Crunches</li>
-                <li>15 Leg Raises</li>
-                <li>30-Second Plank</li>
-                <li>20 Russian Twists</li>
-            </ul>
-            <p>Perform each move slowly, focusing on your form. Complete 3 sets.</p>
-        </div>
-        
-        <div class="workout">
-            <h2>Yoga Flow</h2>
-            <ul>
-                <li>Downward Dog (30 seconds)</li>
-                <li>Warrior II (30 seconds each side)</li>
-                <li>Child's Pose (1 minute)</li>
-                <li>Cat-Cow (1 minute)</li>
-            </ul>
-            <p>This gentle sequence will stretch and strengthen your muscles. Breathe deeply throughout.</p>
-        </div>
-        
-        <!-- Add more workouts here! -->
-        
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <button onclick="location.href='about.html'">About Us</button>
+        <button onclick="location.href='recipes.html'">Recipes</button>
+        <button onclick="window.open('https://bettergram-izfvgi41.bettermode.io', '_blank')">Community Feed</button>
+        <button onclick="location.href='wellness.html'">Wellness</button>
+        <button onclick="location.href='shop.html'">Shop</button>
+        <button onclick="location.href='workouts.html'">At Home Workouts</button>
+        <button onclick="location.href='cart.html'">Cart</button>
+        <button onclick="location.href='contact.html'">Contact Me</button>
     </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <h2>At Home Workouts</h2>
+
+        <div class="grid">
+            <a href="#" class="grid-item">
+                <h3>Morning Stretch</h3>
+                <p>Start your day with gentle stretches to wake up your body.</p>
+            </a>
+
+            <a href="#" class="grid-item">
+                <h3>HIIT Sessions</h3>
+                <p>High-intensity interval training for strength & cardio at home.</p>
+            </a>
+
+            <a href="#" class="grid-item">
+                <h3>Yoga & Flexibility</h3>
+                <p>Improve mobility and calm your mind with guided yoga routines.</p>
+            </a>
+
+            <a href="#" class="grid-item">
+                <h3>Core & Abs</h3>
+                <p>Build a strong core with short, effective home exercises.</p>
+            </a>
+
+            <a href="#" class="grid-item">
+                <h3>Full Body Workouts</h3>
+                <p>Comprehensive routines targeting all major muscle groups.</p>
+            </a>
+        </div>
+    </div>
+
 </body>
 </html>
