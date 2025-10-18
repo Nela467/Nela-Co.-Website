@@ -1,217 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nela & Co. - Community Feed</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Feed - Nela & Co.</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fce4ec; /* light pink background */
+        }
 
-<!-- Firebase v12 modular SDK -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-  import { getDatabase } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
+        /* Sidebar */
+        .sidebar {
+            width: 200px;
+            background-color: #ffffff;
+            height: 100vh;
+            padding-top: 40px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            left: 0;
+            border-right: 1px solid rgba(0,0,0,0.05);
+        }
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyACke4us69kS6kXJsOXMX9uj_JTfEmZBuQ",
-    authDomain: "nelacommunity-84f31.firebaseapp.com",
-    databaseURL: "https://nelacommunity-84f31-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "nelacommunity-84f31",
-    storageBucket: "nelacommunity-84f31.firebasestorage.app",
-    messagingSenderId: "676754625093",
-    appId: "1:676754625093:web:ada78e64077311b644492c"
-  };
+        .sidebar button {
+            border: none;
+            background: none;
+            padding: 15px;
+            margin: 5px 10px;
+            text-align: left;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s;
+        }
 
-  const app = initializeApp(firebaseConfig);
-  window.firebaseDB = getDatabase(app);
-</script>
+        .sidebar button:hover {
+            background-color: rgba(0,0,0,0.05);
+            color: #1abc9c;
+        }
 
-<style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    min-height: 100vh;
-    background-color: #ffe6ec;
-  }
+        /* Main content */
+        .main-content {
+            margin-left: 200px; /* same as sidebar width */
+            padding: 20px;
+        }
 
-  /* Sidebar */
-  .sidebar {
-    width: 200px;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    padding-top: 20px;
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
-  }
+        .iframe-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-  .sidebar button {
-    background-color: transparent;
-    color: #2c3e50;
-    border: none;
-    padding: 15px 20px;
-    margin: 5px 0;
-    cursor: pointer;
-    text-align: left;
-    font-size: 16px;
-    transition: 0.3s;
-  }
+        iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
 
-  .sidebar button:hover {
-    background-color: #ffb6c1;
-    color: white;
-  }
-
-  /* Main content */
-  .main {
-    flex: 1;
-    padding: 40px;
-    text-align: center;
-  }
-
-  h1 {
-    color: #2c3e50;
-    font-size: 36px;
-    margin-bottom: 10px;
-  }
-
-  p {
-    color: #555;
-    font-size: 18px;
-    max-width: 700px;
-    margin: 0 auto 30px auto;
-  }
-
-  /* Form */
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 600px;
-    margin: 0 auto 30px auto;
-  }
-
-  input, textarea {
-    padding: 12px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-  }
-
-  button.submit {
-    background-color: #ffb6c1;
-    color: white;
-    font-size: 18px;
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-
-  button.submit:hover {
-    background-color: #ff99ac;
-  }
-
-  /* Posts */
-  #postsContainer {
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
-  .post {
-    background-color: white;
-    padding: 20px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    text-align: left;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    transition: transform 0.2s;
-  }
-
-  .post:hover {
-    transform: translateY(-2px);
-  }
-
-  .meta {
-    font-size: 12px;
-    color: gray;
-    margin-top: 5px;
-  }
-</style>
+        .company-name {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+    </style>
 </head>
 <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <button onclick="document.getElementById('feed').scrollIntoView({behavior:'smooth'})">Community Feed</button>
+        <button onclick="location.href='about.html'">About Us</button>
+        <button onclick="location.href='recipes.html'">Recipes</button>
+        <button onclick="location.href='wellness.html'">Wellness</button>
+        <button onclick="location.href='shop.html'">Shop</button>
+        <button onclick="location.href='workouts.html'">Workouts</button>
+        <button onclick="location.href='contact.html'">Contact</button>
+    </div>
 
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <a href="about.html"><button>About Us</button></a>
-    <a href="recipes.html"><button>Recipes</button></a>
-    <a href="community.html"><button>Community Feed</button></a>
-    <a href="wellness.html"><button>Wellness</button></a>
-    <a href="shop.html"><button>Shop</button></a>
-    <a href="workouts.html"><button>At Home Workouts</button></a>
-    <a href="cart.html"><button>Cart</button></a>
-    <a href="contact.html"><button>Contact Me</button></a>
-  </div>
+    <!-- Main content -->
+    <div class="main-content">
+        <div class="company-name">NELA & CO. - COMMUNITY FEED</div>
 
-  <!-- Main content -->
-  <div class="main">
-    <h1>Community Feed</h1>
-    <p>Share your stories, ask questions, and connect with others — no login required! Posts appear in real time for everyone.</p>
-
-    <!-- Form -->
-    <form id="postForm">
-      <input type="text" id="name" placeholder="Your name" required>
-      <textarea id="message" rows="4" placeholder="Write your post here..." required></textarea>
-      <button type="submit" class="submit">Post</button>
-    </form>
-
-    <!-- Posts -->
-    <div id="postsContainer"></div>
-  </div>
-
-  <!-- Firebase posts script -->
-  <script type="module">
-    import { ref, push, onValue } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
-
-    const db = window.firebaseDB;
-    const form = document.getElementById('postForm');
-    const postsContainer = document.getElementById('postsContainer');
-
-    function scrollToBottom() {
-      postsContainer.scrollTop = postsContainer.scrollHeight;
-    }
-
-    // Listen for posts in real time
-    onValue(ref(db, 'posts'), (snapshot) => {
-      const posts = snapshot.val() || {};
-      postsContainer.innerHTML = Object.values(posts).reverse().map(p => `
-        <div class="post">
-          <strong>${p.name}</strong>
-          <div>${p.message}</div>
-          <div class="meta">${p.time}</div>
+        <div id="feed" class="iframe-container">
+            <iframe src="https://bettergram-izfvgi41.bettermode.io" title="Community Feed"></iframe>
         </div>
-      `).join('');
-      scrollToBottom();
-    });
-
-    // Submit new post
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim() || 'Anonymous';
-      const message = document.getElementById('message').value.trim();
-      if (!message) return;
-
-      push(ref(db, 'posts'), {
-        name,
-        message,
-        time: new Date().toLocaleString()
-      });
-
-      form.reset();
-    });
-  </script>
-
+    </div>
 </body>
 </html>
