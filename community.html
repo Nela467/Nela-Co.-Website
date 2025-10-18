@@ -1,95 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nela & Co. - Community Feed</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      display: flex;
-      min-height: 100vh;
-      background-color: #ffe6ec; /* soft pink background */
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nela & Co. - Community Feed</title>
 
-    /* Sidebar */
-    .sidebar {
-      width: 200px;
-      background-color: #fff;
-      display: flex;
-      flex-direction: column;
-      padding-top: 20px;
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
-    }
+<!-- Firebase v12 modular SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+  import { getDatabase } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
 
-    .sidebar button {
-      background-color: transparent;
-      color: #2c3e50;
-      border: none;
-      padding: 15px 20px;
-      margin: 5px 0;
-      cursor: pointer;
-      text-align: left;
-      font-size: 16px;
-      transition: 0.3s;
-    }
+  const firebaseConfig = {
+    apiKey: "AIzaSyACke4us69kS6kXJsOXMX9uj_JTfEmZBuQ",
+    authDomain: "nelacommunity-84f31.firebaseapp.com",
+    databaseURL: "https://nelacommunity-84f31-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "nelacommunity-84f31",
+    storageBucket: "nelacommunity-84f31.firebasestorage.app",
+    messagingSenderId: "676754625093",
+    appId: "1:676754625093:web:ada78e64077311b644492c"
+  };
 
-    .sidebar button:hover {
-      background-color: #ffb6c1;
-      color: white;
-    }
+  const app = initializeApp(firebaseConfig);
+  window.firebaseDB = getDatabase(app);
+</script>
 
-    /* Main content */
-    .main {
-      flex: 1;
-      padding: 60px 40px;
-      text-align: center;
-    }
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    min-height: 100vh;
+    background-color: #ffe6ec;
+  }
 
-    h1 {
-      color: #2c3e50;
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
+  /* Sidebar */
+  .sidebar {
+    width: 200px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+  }
 
-    p {
-      color: #555;
-      font-size: 18px;
-      max-width: 700px;
-      margin: 0 auto 30px auto;
-    }
+  .sidebar button {
+    background-color: transparent;
+    color: #2c3e50;
+    border: none;
+    padding: 15px 20px;
+    margin: 5px 0;
+    cursor: pointer;
+    text-align: left;
+    font-size: 16px;
+    transition: 0.3s;
+  }
 
-    /* Forum embed */
-    iframe {
-      width: 100%;
-      height: 800px;
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-    }
+  .sidebar button:hover {
+    background-color: #ffb6c1;
+    color: white;
+  }
 
-    /* Fallback button if embed not working */
-    .forum-link {
-      display: inline-block;
-      background-color: #ffb6c1;
-      color: white;
-      padding: 14px 30px;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 18px;
-      font-weight: bold;
-      margin-top: 20px;
-      transition: background 0.3s;
-    }
+  /* Main content */
+  .main {
+    flex: 1;
+    padding: 40px;
+    text-align: center;
+  }
 
-    .forum-link:hover {
-      background-color: #ff99ac;
-    }
-  </style>
+  h1 {
+    color: #2c3e50;
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #555;
+    font-size: 18px;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+  }
+
+  /* Form */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+  }
+
+  input, textarea {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+
+  button.submit {
+    background-color: #ffb6c1;
+    color: white;
+    font-size: 18px;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  button.submit:hover {
+    background-color: #ff99ac;
+  }
+
+  /* Posts */
+  #postsContainer {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .post {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.2s;
+  }
+
+  .post:hover {
+    transform: translateY(-2px);
+  }
+
+  .meta {
+    font-size: 12px;
+    color: gray;
+    margin-top: 5px;
+  }
+</style>
 </head>
 <body>
 
@@ -105,20 +155,63 @@
     <a href="contact.html"><button>Contact Me</button></a>
   </div>
 
-  <!-- Main Content -->
+  <!-- Main content -->
   <div class="main">
-    <h1>Our Community Feed</h1>
-    <p>Share your stories, ask questions, and connect with others on your wellness journey.  
-    Be part of a supportive and empowering space where balance meets growth.</p>
+    <h1>Community Feed</h1>
+    <p>Share your stories, ask questions, and connect with others — no login required! Posts appear in real time for everyone.</p>
 
-    <!-- Embed Flarum forum -->
-    <iframe src="https://nelacommunity.flarum.cloud"></iframe>
+    <!-- Form -->
+    <form id="postForm">
+      <input type="text" id="name" placeholder="Your name" required>
+      <textarea id="message" rows="4" placeholder="Write your post here..." required></textarea>
+      <button type="submit" class="submit">Post</button>
+    </form>
 
-    <!-- Backup link (in case iframe doesn't load) -->
-    <a href="https://nelacommunity.flarum.cloud" target="_blank" class="forum-link">
-      Visit Full Community Forum
-    </a>
+    <!-- Posts -->
+    <div id="postsContainer"></div>
   </div>
+
+  <!-- Firebase posts script -->
+  <script type="module">
+    import { ref, push, onValue } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
+
+    const db = window.firebaseDB;
+    const form = document.getElementById('postForm');
+    const postsContainer = document.getElementById('postsContainer');
+
+    function scrollToBottom() {
+      postsContainer.scrollTop = postsContainer.scrollHeight;
+    }
+
+    // Listen for posts in real time
+    onValue(ref(db, 'posts'), (snapshot) => {
+      const posts = snapshot.val() || {};
+      postsContainer.innerHTML = Object.values(posts).reverse().map(p => `
+        <div class="post">
+          <strong>${p.name}</strong>
+          <div>${p.message}</div>
+          <div class="meta">${p.time}</div>
+        </div>
+      `).join('');
+      scrollToBottom();
+    });
+
+    // Submit new post
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim() || 'Anonymous';
+      const message = document.getElementById('message').value.trim();
+      if (!message) return;
+
+      push(ref(db, 'posts'), {
+        name,
+        message,
+        time: new Date().toLocaleString()
+      });
+
+      form.reset();
+    });
+  </script>
 
 </body>
 </html>
