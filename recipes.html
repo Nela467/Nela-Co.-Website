@@ -1,78 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nela & Co. - Recipes Dashboard</title>
-<style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #ffc0cb; /* light pink */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes - Nela & Co.</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fce4ec; /* light pink background */
+        }
 
-    .grid-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-        width: 90%;
-        max-width: 1200px;
-        padding: 20px;
-    }
+        /* Sidebar */
+        .sidebar {
+            width: 200px;
+            background-color: #ffffff;
+            height: 100vh;
+            padding-top: 40px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            left: 0;
+            border-right: 1px solid rgba(0,0,0,0.05);
+        }
 
-    .grid-item {
-        background-color: white;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        text-align: center;
-        cursor: pointer;
-        transition: transform 0.3s, box-shadow 0.3s;
-        text-decoration: none;
-        color: #333;
-    }
+        .sidebar button {
+            border: none;
+            background: none;
+            padding: 15px;
+            margin: 5px 10px;
+            text-align: left;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s;
+        }
 
-    .grid-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-    }
+        .sidebar button:hover {
+            background-color: rgba(0,0,0,0.05);
+            color: #1abc9c;
+        }
 
-    .grid-item img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-    }
+        /* Main content */
+        .main-content {
+            margin-left: 200px; /* same width as sidebar */
+            padding: 20px;
+        }
 
-    .grid-item h3 {
-        margin: 15px 10px;
-        font-size: 20px;
-    }
-</style>
+        .company-name {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        /* Recipe grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .grid-item {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .grid-item h3 {
+            margin: 10px 0;
+            padding: 0 10px;
+            font-size: 18px;
+            color: #2c3e50;
+        }
+    </style>
 </head>
 <body>
 
-<div class="grid-container">
-    <a href="breakfast.html" class="grid-item">
-        <img src="breakfast.jpg" alt="Breakfast">
-        <h3>Breakfast Recipes</h3>
-    </a>
-    <a href="lunch.html" class="grid-item">
-        <img src="lunch.jpg" alt="Lunch & Dinner">
-        <h3>Lunch & Dinner</h3>
-    </a>
-    <a href="desserts.html" class="grid-item">
-        <img src="desserts.jpg" alt="Dessert">
-        <h3>Desserts</h3>
-    </a>
-    <a href="macro.html" class="grid-item">
-        <img src="macro.jpg" alt="Macro Breakdown">
-        <h3>Macro Breakdown & Understanding Balanced Eating</h3>
-    </a>
-</div>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <button onclick="location.href='about.html'">About Us</button>
+        <button onclick="location.href='recipes.html'">Recipes</button>
+        <button onclick="location.href='community.html'">Community Feed</button>
+        <button onclick="location.href='wellness.html'">Wellness</button>
+        <button onclick="location.href='shop.html'">Shop</button>
+        <button onclick="location.href='workouts.html'">At Home Workouts</button>
+        <button onclick="location.href='cart.html'">Cart</button>
+        <button onclick="location.href='contact.html'">Contact Me</button>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <div class="company-name">RECIPES</div>
+
+        <div class="grid">
+            <a href="breakfast.html" class="grid-item">
+                <img src="breakfast.jpg" alt="Breakfast">
+                <h3>Breakfast</h3>
+            </a>
+            <a href="lunch.html" class="grid-item">
+                <img src="lunch.jpg" alt="Lunch & Dinner">
+                <h3>Lunch & Dinner</h3>
+            </a>
+            <a href="desserts.html" class="grid-item">
+                <img src="dessert.jpg" alt="Dessert">
+                <h3>Dessert</h3>
+            </a>
+            <a href="macro.html" class="grid-item">
+                <img src="macro.jpg" alt="Macro Breakdown">
+                <h3>Macro Breakdown & Balanced Eating</h3>
+            </a>
+        </div>
+    </div>
 
 </body>
 </html>
